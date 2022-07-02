@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css') }}">
+    <!-- Bootstrap CSS -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+p {
+  color: #4dff4d	;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+</head>
+
+
+<div class="sidebar">
+    <a href="/start_member">Add Member</a>
+    <a href="/seo">Agent Expenditure</a>
+    <a href="/collector">Add Collector Chart</a>
+  <a href="/start_plot">Plot Register</a>
+    <a href="/plot_approve">Plot Approved</a>
+    <a href="/member_details">Member Details</a>
+    <a href="/seo_details">Expenditure Details</a>
+    <a href="/collector_survey_details">Collector details</a>
+    <a href="/plot_reg_details">Plot Register Details</a>
+    <a href="/plot_approve_details">Plot Approved Details</a>
+    <a href="/reservation">Dashboard</a>
+  <a href="/logout">Logout</a>
+</div>
+
+  <div class="container card card-body" style="margin-left:14%"  >
+<h1>Update member details</h1>
+      <p>{{error}}</p>
+    <form class="form"  action="/edit_member/{{row[0]}}" method='POST' >
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-5">
+<div class="form-group">
+       <div class="form-group">
+      <label>Member Name</label>
+      <input type="text" autocomplete="off" value="{{row[2]}}" pattern="[a-z A-Z]+" title="Enter Only Character" required placeholder="Enter Member Name"  name="u_member_name" class="form-control"><br>
+      </div>
+
+       <div class="form-group">
+      <label>Age</label>
+      <input  maxlength="3" size="3" required title="Enter Age" value="{{row[3]}}" placeholder="Enter Age"  type="number" name="uage" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"><br>
+      </div>
+
+ <div class="form-group">
+      <label>Occupation</label>
+      <input autocomplete="off"  pattern="[a-z A-Z]+" title="Enter Only Character"  value="{{row[4]}}" required type="text" placeholder="Enter Occupation"  name="uoccupation" class="form-control"><br>
+      </div>
+     <div class="form-group">
+      <label>Mobile</label>
+      <input type="text" pattern="^[01]?[- .]?(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?\d{3}[- .]?\d{4}$"  value="{{row[5]}}" title="Must contain only number 10 digits" required placeholder="Enter Mobile"  name="umobile" class="form-control"><br>
+      </div>
+    <div class="form-group">
+      <label>Address</label>
+      <input type="text" autocomplete="off"  pattern="[a-z A-Z]+" title="Enter Only Character" value="{{row[6]}}" required placeholder="Enter Address"  name="uaddress" class="form-control"><br>
+      </div>
+    <div class="form-group">
+      <label>Pincode</label>
+      <input   title="Enter Valid Pincode" type="number" inputmode="numeric" maxlength="6" value="{{row[7]}}" placeholder="Enter Pincode"  name="upincode" class="form-control"
+             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  required><br>
+      </div>
+                <input type="submit" class="btn btn-primary btn-block btn-lg form-control">
+
+        </div>
+        </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

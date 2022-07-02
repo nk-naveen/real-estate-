@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css') }}">
+    <!-- Bootstrap CSS -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+p {
+  color: #4dff4d	;
+}
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+</head>
+<body >
+
+<div class="sidebar">
+    <a href="/start_member">Add Member</a>
+    <a href="/seo">Agent Expenditure</a>
+    <a href="/collector">Add Collector Chart</a>
+  <a href="/start_plot">Plot Register</a>
+    <a href="/plot_approve">Plot Approved</a>
+    <a href="/member_details">Member Details</a>
+    <a href="/seo_details">Expenditure Details</a>
+    <a href="/collector_survey_details">Collector details</a>
+    <a href="/plot_reg_details">Plot Register Details</a>
+    <a href="/plot_approve_details">Plot Approved Details</a>
+    <a href="/dashboard">Dashboard</a>
+  <a href="/logout">Logout</a>
+</div>
+  <div class="container col-md-6 card card-body" style="margin-left:25%" >
+
+<h1>Update Collector Survey</h1>
+      <p>{{error}}</p>
+<div class="row">
+    <form class="form" action="/edit_collector/{{row[0]}}" method="POST">
+<div>
+
+  <div class="form-group">
+ <input type="text" pattern="^[01]?[- .]?(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?\d{3}[- .]?\d{4}$" value="{{row[2]}}" title="Must contain only number 10 digits" required name="mobile" class="form-control" placeholder="Mobile No">
+  </div>
+    <br>
+   <div class="form-group">
+  <input type="number" required name="installment" value="{{row[3]}}" class="form-control" placeholder="Installment">
+  </div>
+    <br>
+  <div class="form-group">
+  <input type="text" required autocomplete="off" value="{{row[4]}}" pattern="[a-z A-Z]+" title="Enter Only Character" class="form-control" name="payment_type" placeholder="Payment type">
+  </div>
+    <br>
+</div>
+<div>
+  <div class="form-group">
+      <input required autocomplete="off"  pattern="[a-z A-Z]+" value="{{row[5]}}" title="Enter Only Character" type="text" class="form-control" name="collector_name" placeholder="Collector Name">
+  </div>
+    <br>
+  <div class="form-group">
+ <input required autocomplete="off"  pattern="[a-z A-Z]+" value="{{row[6]}}" title="Enter Only Character" type="text" class="form-control" name="member_name" placeholder="Member Name">
+  </div>
+    <br>
+   <div class="form-group">
+  <input type="text" required autocomplete="off"  pattern="[a-z A-Z]+" value="{{row[7]}}" title="Enter Only Character" class="form-control" name="duration"  placeholder="Duration">
+  </div>
+
+    <br>
+    <input type="submit" class="btn btn-primary form-control" value="Submit">
+</div>
+</div>
+
+</div>
+</form>
+</body>
+</html>
